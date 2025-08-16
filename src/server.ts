@@ -72,16 +72,7 @@ app.use(
 app.use("*", (req: express.Request, res: express.Response) => {
   res.status(404).json({
     message: "Endpoint not found",
-    availableEndpoints: [
-      "/health",
-      "/wakeup",
-      "/read",
-      "/dashboard",
-      "/conversations",
-      "/init-conversations",
-      "/not-found",
-      "/room-status",
-    ],
+    availableEndpoints: ["/wakeup", "/room-status"],
   });
 });
 
