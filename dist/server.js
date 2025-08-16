@@ -59,16 +59,7 @@ app.use((err, req, res, next) => {
 app.use("*", (req, res) => {
     res.status(404).json({
         message: "Endpoint not found",
-        availableEndpoints: [
-            "/health",
-            "/wakeup",
-            "/read",
-            "/dashboard",
-            "/conversations",
-            "/init-conversations",
-            "/not-found",
-            "/room-status",
-        ],
+        availableEndpoints: ["/wakeup", "/room-status"],
     });
 });
 app.listen(PORT, "0.0.0.0", () => {
