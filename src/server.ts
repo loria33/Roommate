@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import { updateRoomStatus } from "./routes";
+import { updateRoomStatus, getCurrentStatus } from "./routes";
 
 dotenv.config();
 
@@ -49,8 +49,9 @@ app.get("/wakeup", (req, res) => {
     .json({ message: "Server is awake", timestamp: new Date().toISOString() });
 });
 
-// Room status endpoint
+// Room status endpoints
 app.post("/room-status", updateRoomStatus);
+app.get("/current-status", getCurrentStatus);
 
 // Error handling middleware
 app.use(

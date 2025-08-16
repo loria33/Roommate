@@ -81,3 +81,22 @@ export const updateRoomStatus = async (req: Request, res: Response) => {
     });
   }
 };
+
+export const getCurrentStatus = async (req: Request, res: Response) => {
+  try {
+    const getAllRoomsQuery = `SELECT * FROM roomstatus`;
+    const result = await query(getAllRoomsQuery);
+
+    res.status(200).json({
+      message: "Rooms retrieved successfully",
+      data: result.rows,
+      timestamp: new Date().toISOString(),
+    });
+  } catch (error) {
+    console.error("Get current status error:", error);
+    res.status(500).json({
+      message: "Error retrieving room statuses",
+      error: error instanceof Error ? error.message : "Unknown error",
+    });
+  }
+};
